@@ -1,6 +1,6 @@
 [English](./README.md) | 简体中文
 <p align="center">
-  <img src="https://github.com/semmywong/woodpecker/blob/main/assets/woodpecker.png" />
+  <img src="https://raw.githubusercontent.com/semmywong/woodpecker/main/assets/woodpecker.png" />
 </p>
 <p align="center">
   啄木鸟(前端自动集成服务)
