@@ -1,6 +1,6 @@
 English | [中文](./README.zh-CN.md)
 <p align="center">
-  <img src="./media/Woodpecker.png" />
+  <img src="./media/woodpecker.png" />
 </p>
 <p align="center">
   Woodpecker(front-end automated integration services)
