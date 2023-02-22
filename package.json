@@ -3,7 +3,7 @@
     "displayName": "Woodpecker",
     "description": "It's a front-end deployment tool that combines automation and intelligence to free front-end personnel from the irritation of a thousand repetitive tasks. You can via it build,test and deploy your app",
     "publisher": "SemmyWong",
-    "icon": "media/woodpecker.png",
+    "icon": "assets/woodpecker.png",
     "keywords": [
         "ssh",
         "deploy",
@@ -127,8 +127,8 @@
             "activitybar": [
                 {
                     "id": "server-explorer",
-                    "title": "自动集成服务",
-                    "icon": "media/activity_bar_icon.svg"
+                    "title": "自动化集成服务",
+                    "icon": "assets/activity_bar_icon.svg"
                 }
             ]
         },
@@ -136,8 +136,8 @@
             "server-explorer": [
                 {
                     "id": "woodpecker",
-                    "name": "自动集成服务",
-                    "icon": "media/activity_bar_icon.svg",
+                    "name": "自动化集成服务",
+                    "icon": "assets/activity_bar_icon.svg",
                     "contextualTitle": "自动集成服务"
                 }
             ]
@@ -173,11 +173,11 @@
         "ora": "^5.1.0"
     },
     "bugs": {
-        "url": "https://github.com/15669028801/Woodpecker/issues"
+        "url": "https://github.com/semmywong/woodpecker/issues"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/15669028801/Woodpecker"
+        "url": "https://github.com/semmywong/woodpecker"
     },
-    "homepage": "https://github.com/15669028801/Woodpecker"
+    "homepage": "https://github.com/semmywong/woodpecker"
 }
