@@ -25,7 +25,7 @@ The above deployment method, there are shortcomings, but also need to compile in
 
 1. Search for `Woodpecker` in the vscode extension and click install
 2. Open `File->Preferences->Settings`
-3. You can choose to go to the `User Settings` or `Workspace Settings`, find the `Extension` Tree node and locate Woodpecker, click Edit in `Settings.json`
+3. You can choose to go to the `User Settings` or `Workspace Settings`, find the `Extension` Tree node and locate `Woodpecker`, click Edit in `Settings.json`
 4. Go to the `Settings.json` file and the following structure will be automatically generated for you
 
 ```json
@@ -40,6 +40,8 @@ The above deployment method, there are shortcomings, but also need to compile in
 }
 
 ```
+
+5. You can create multiple environments in the array configuration
 
 ## FAQ
 
