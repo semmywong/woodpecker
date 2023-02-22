@@ -1,6 +1,6 @@
 [English](./README.md) | 简体中文
 <p align="center">
-  <img src="./media/Woodpecker.png" />
+  <img src="./media/woodpecker.png" />
 </p>
 <p align="center">
   啄木鸟(前端自动集成服务)
