@@ -2,9 +2,14 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/semmywong/woodpecker/main/assets/woodpecker.png" />
 </p>
-<p align="center">
-  啄木鸟(前端自动集成服务)
-</p>
+<h2 align="center">
+  啄木鸟
+</h2>
+<h2 align="center">
+ 前端自动化集成服务
+</h2>
+
+---
 
 当前端和后端分离开发时，通用的方式部署前端项目的步骤是：
 

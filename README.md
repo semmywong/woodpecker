@@ -2,9 +2,14 @@ English | [中文](./README.zh-CN.md)
 <p align="center">
   <img src="https://raw.githubusercontent.com/semmywong/woodpecker/main/assets/woodpecker.png" />
 </p>
-<p align="center">
-  Woodpecker(front-end automated integration services)
-</p>
+<h2 align="center">
+  Woodpecker
+</h2>
+<h2 align="center">
+ Front-end Automation Integration Services
+</h2>
+
+---
 
 Steps to deploy a front-end project in a generic way when developing with a separate front-end and back-end：
 
