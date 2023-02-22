@@ -1,0 +1,183 @@
+{
+    "name": "woodpecker",
+    "displayName": "Woodpecker",
+    "description": "It's a front-end deployment tool that combines automation and intelligence to free front-end personnel from the irritation of a thousand repetitive tasks",
+    "publisher": "Semmy Wong",
+    "icon": "media/woodpecker.png",
+    "keywords": [
+        "ssh",
+        "deploy",
+        "部署",
+        "服务器上传"
+    ],
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.50.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "main": "./out/extension.js",
+    "activationEvents": [
+        "onView:woodpecker"
+    ],
+    "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "Woodpecker",
+            "properties": {
+                "woodpecker.config": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "default": "",
+                                "description": "the host description"
+                            },
+                            "host": {
+                                "type": "string",
+                                "default": "",
+                                "description": "ip or domain which can be connected"
+                            },
+                            "username": {
+                                "type": "string",
+                                "default": "",
+                                "description": "username"
+                            },
+                            "password": {
+                                "type": "string",
+                                "default": "",
+                                "description": "password"
+                            },
+                            "privateKey": {
+                                "type": "string",
+                                "default": "",
+                                "description": "Path address of the private key certificate"
+                            },
+                            "remotePath": {
+                                "type": "string",
+                                "default": "",
+                                "description": "Server file directory for project uploads"
+                            },
+                            "build": {
+                                "type": "string",
+                                "default": "",
+                                "description": "Build the executed command"
+                            },
+                            "distPath": {
+                                "type": "string",
+                                "default": "",
+                                "description": "Pack up the directory to be uploaded"
+                            }
+                        }
+                    },
+                    "default": [
+                        {
+                            "name": "",
+                            "host": "",
+                            "username": "",
+                            "password": "",
+                            "privateKey": "",
+                            "remotePath": "",
+                            "build": "",
+                            "distPath": ""
+                        }
+                    ],
+                    "description": "setting of all server nodes."
+                }
+            }
+        },
+        "commands": [
+            {
+                "command": "woodpecker.refresh",
+                "title": "刷新",
+                "icon": {
+                    "light": "resources/refresh_light.svg",
+                    "dark": "resources/refresh_dark.svg"
+                }
+            },
+            {
+                "command": "woodpecker.upload",
+                "title": "上传",
+                "icon": {
+                    "light": "resources/upload_light.svg",
+                    "dark": "resources/upload_dark.svg"
+                }
+            }
+        ],
+        "menus": {
+            "view/title": [
+                {
+                    "command": "woodpecker.refresh",
+                    "when": "view == woodpecker",
+                    "group": "navigation"
+                }
+            ],
+            "view/item/context": [
+                {
+                    "command": "woodpecker.upload",
+                    "when": "view == woodpecker && viewItem == SERVER_NODE",
+                    "group": "inline"
+                }
+            ]
+        },
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "server-explorer",
+                    "title": "自动集成服务",
+                    "icon": "media/activity_bar_icon.svg"
+                }
+            ]
+        },
+        "views": {
+            "server-explorer": [
+                {
+                    "id": "woodpecker",
+                    "name": "自动集成服务",
+                    "icon": "media/activity_bar_icon.svg",
+                    "contextualTitle": "自动集成服务"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "yarn run compile",
+        "compile": "tsc -p ./",
+        "lint": "eslint src --ext ts",
+        "watch": "tsc -watch -p ./",
+        "pretest": "yarn run compile && yarn run lint",
+        "test": "node ./out/test/runTest.js",
+        "build": "vsce package"
+    },
+    "devDependencies": {
+        "@types/glob": "^7.1.3",
+        "@types/mocha": "^8.0.0",
+        "@types/node": "^12.11.7",
+        "@types/vscode": "^1.50.0",
+        "@typescript-eslint/eslint-plugin": "^4.1.1",
+        "@typescript-eslint/parser": "^4.1.1",
+        "eslint": "^7.9.0",
+        "glob": "^7.1.6",
+        "mocha": "^8.1.3",
+        "typescript": "^4.0.2",
+        "vscode-test": "^1.4.0"
+    },
+    "dependencies": {
+        "archiver": "^5.0.2",
+        "chalk": "^4.1.0",
+        "inquirer": "^7.3.3",
+        "node-ssh": "^11.1.1",
+        "ora": "^5.1.0"
+    },
+    "bugs": {
+        "url": "https://github.com/15669028801/Woodpecker/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/15669028801/Woodpecker"
+    },
+    "homepage": "https://github.com/15669028801/Woodpecker"
+}
