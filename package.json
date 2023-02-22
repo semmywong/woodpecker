@@ -1,8 +1,8 @@
 {
     "name": "woodpecker",
     "displayName": "Woodpecker",
-    "description": "It's a front-end deployment tool that combines automation and intelligence to free front-end personnel from the irritation of a thousand repetitive tasks",
-    "publisher": "Semmy Wong",
+    "description": "It's a front-end deployment tool that combines automation and intelligence to free front-end personnel from the irritation of a thousand repetitive tasks. You can via it build,test and deploy your app",
+    "publisher": "SemmyWong",
     "icon": "media/woodpecker.png",
     "keywords": [
         "ssh",
@@ -10,7 +10,7 @@
         "部署",
         "服务器上传"
     ],
-    "version": "0.0.1",
+    "version": "0.1.0",
     "engines": {
         "vscode": "^1.50.0"
     },
