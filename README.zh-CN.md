@@ -2,12 +2,12 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/semmywong/woodpecker/main/assets/woodpecker.png" />
 </p>
-<h2 align="center">
+<p align="center" style="font-size:32px; ">
   啄木鸟
-</h2>
-<h2 align="center">
+</p>
+<p align="center" style="font-size:24px; ">
  前端自动化集成服务
-</h2>
+</p>
 
 ---
 
