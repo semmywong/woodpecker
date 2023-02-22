@@ -2,11 +2,11 @@ English | [中文](./README.zh-CN.md)
 <p align="center">
   <img src="https://raw.githubusercontent.com/semmywong/woodpecker/main/assets/woodpecker.png" />
 </p>
-<p align="center" style="font-size:32px; ">
-  Woodpecker
+<p align="center">
+  <font size="6">Woodpecker</font>
 </p>
-<p align="center" style="font-size:24px; ">
- Front-end Automation Integration Services
+<p align="center">
+  <font size="5">Front-end Automation Integration Services</font>
 </p>
 
 ---
