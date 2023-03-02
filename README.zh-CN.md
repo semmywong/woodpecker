@@ -3,14 +3,12 @@
   <img src="https://raw.githubusercontent.com/semmywong/woodpecker/main/assets/woodpecker.png" />
 </p>
 
-<p align="center">
-  <font size="6">啄木鸟</font>
-</p>
+<h1 align="center">啄木鸟</h1>
 <p align="center">
   <font size="5">前端自动化集成服务</font>
 </p>
 
----
+![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/SemmyWong.woodpecker) ![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/d/SemmyWong.woodpecker) ![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/SemmyWong.woodpecker) ![Visual Studio Marketplace Last Updated](https://img.shields.io/visual-studio-marketplace/last-updated/SemmyWong.woodpecker?style=plastic)
 
 当前端和后端分离开发时，通用的方式部署前端项目的步骤是：
 

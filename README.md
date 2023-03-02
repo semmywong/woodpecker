@@ -7,6 +7,8 @@ English | [中文](./README.zh-CN.md)
   <font size="5">Front-end Automation Integration Services</font>
 </p>
 
+![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/SemmyWong.woodpecker) ![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/d/SemmyWong.woodpecker) ![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/SemmyWong.woodpecker) ![Visual Studio Marketplace Last Updated](https://img.shields.io/visual-studio-marketplace/last-updated/SemmyWong.woodpecker?style=plastic)
+
 Steps to deploy a front-end project in a generic way when developing with a separate front-end and back-end：
 
 1. Upload via Xshell command
