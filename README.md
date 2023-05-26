@@ -51,3 +51,7 @@ The above deployment method, there are shortcomings, but also need to compile in
 ### Do I need to configure both password and privateKey?
 
 No, if you configure the address path of the key, then you don't need a username and password, otherwise you need a username and password
+
+### Is there any limitation of local development environment and server development environment?
+
+Currently only in the local is window environment, the server is linux environment tested, other environments have not been tested, if there are problems, you can raise issues
