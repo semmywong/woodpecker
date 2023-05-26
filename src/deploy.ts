@@ -2,6 +2,7 @@ const fs = require('fs');
 const archiver = require('archiver');
 const childProcess = require('child_process');
 import { NodeSSH } from 'node-ssh';
+import * as path from 'path';
 import * as vscode from 'vscode';
 import { ServerNodeConfigItem } from './ServerNodeProvider';
 import { oConsole } from './utils';
@@ -205,7 +206,7 @@ export class Deploy {
         const { config } = this;
         const { remotePath } = config;
         log(`4. 删除远程文件 ${underline(remotePath)}`);
-        return this.ssh.execCommand(`rm -rf ${remotePath}`);
+        return this.ssh.execCommand(`rm -rf ${path.join(remotePath, '*')}`);
     };
     // 上传本地文件
     uploadLocalFile = () => {
@@ -221,7 +222,7 @@ export class Deploy {
     // 解压远程文件
     unzipRemoteFile = () => {
         const { remotePath, distPath } = this.config;
-        const remoteFileName = `${remotePath}.zip`;
+        const remoteFileName = `${distPath}.zip`;
         const remoteFile = `${remotePath}/${distPath}.zip`;
 
         log(`6. 解压远程文件 ${underline(remoteFileName)}`);
