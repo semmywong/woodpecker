@@ -31,5 +31,6 @@
   "ext.deploy.setHost": "Please configure the server address [host]",
   "ext.deploy.setDistPath": "Please configure the local directory to be uploaded [distPath]",
   "ext.deploy.workspaceEmpty": "No current work area",
-  "ext.deploy.packedUpload": "Package Upload"
+  "ext.deploy.packedUpload": "Package Upload",
+  "ext.terminal.needPrivateKeyCertificate": "The terminal connection must be configured with a key certificate"
 }

@@ -31,5 +31,6 @@
   "ext.deploy.setHost": "请配置服务端地址[host]",
   "ext.deploy.setDistPath": "请配置本地需要上传的目录[distPath]",
   "ext.deploy.workspaceEmpty": "当前无工作区",
-  "ext.deploy.packedUpload": "打包上传"
+  "ext.deploy.packedUpload": "打包上传",
+  "ext.terminal.needPrivateKeyCertificate": "终端连接必须配置密钥证书"
 }
