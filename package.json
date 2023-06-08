@@ -100,7 +100,7 @@
       },
       {
         "command": "woodpecker.upload",
-        "title": "%common.pkg.upload%",
+        "title": "%common.pkg.packageDeploy%",
         "icon": {
           "light": "resources/upload_light.svg",
           "dark": "resources/upload_dark.svg"

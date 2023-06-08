@@ -11,7 +11,7 @@
   "common.pkg.uploadedDir": "Pack up the directory to be uploaded",
   "common.pkg.allServerNode": "setting of all server nodes.",
   "common.pkg.refresh": "refresh",
-  "common.pkg.upload": "upload",
+  "common.pkg.packageDeploy": "package & deploy",
   "common.pkg.terminal": "terminal",
   "ext.deploy.checkSettings": "check settings",
   "ext.deploy.pack": "pack",
