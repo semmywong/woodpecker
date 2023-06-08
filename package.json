@@ -1,183 +1,198 @@
 {
-    "name": "woodpecker",
-    "displayName": "Woodpecker",
-    "description": "It's a front-end deployment tool that combines automation and intelligence to free front-end personnel from the irritation of a thousand repetitive tasks. You can via it build,test and deploy your app",
-    "publisher": "SemmyWong",
-    "icon": "assets/woodpecker.png",
-    "keywords": [
-        "ssh",
-        "deploy",
-        "部署",
-        "服务器上传"
-    ],
-    "version": "0.2.0",
-    "engines": {
-        "vscode": "^1.50.0"
-    },
-    "categories": [
-        "Other"
-    ],
-    "main": "./dist/extension.js",
-    "activationEvents": [
-        "onView:woodpecker"
-    ],
-    "contributes": {
-        "configuration": {
+  "name": "woodpecker",
+  "displayName": "Woodpecker",
+  "description": "It's a front-end deployment tool that combines automation and intelligence to free front-end personnel from the irritation of a thousand repetitive tasks. You can via it build,test and deploy your app",
+  "publisher": "SemmyWong",
+  "icon": "assets/woodpecker.png",
+  "keywords": [
+    "ssh",
+    "deploy",
+    "部署",
+    "服务器上传"
+  ],
+  "version": "0.2.0",
+  "engines": {
+    "vscode": "^1.50.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onView:woodpecker"
+  ],
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "Woodpecker",
+      "properties": {
+        "woodpecker.config": {
+          "type": "array",
+          "items": {
             "type": "object",
-            "title": "Woodpecker",
             "properties": {
-                "woodpecker.config": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "name": {
-                                "type": "string",
-                                "default": "",
-                                "description": "the host description"
-                            },
-                            "host": {
-                                "type": "string",
-                                "default": "",
-                                "description": "ip or domain which can be connected"
-                            },
-                            "username": {
-                                "type": "string",
-                                "default": "",
-                                "description": "username"
-                            },
-                            "password": {
-                                "type": "string",
-                                "default": "",
-                                "description": "password"
-                            },
-                            "privateKey": {
-                                "type": "string",
-                                "default": "",
-                                "description": "Path address of the private key certificate"
-                            },
-                            "remotePath": {
-                                "type": "string",
-                                "default": "",
-                                "description": "Server file directory for project uploads"
-                            },
-                            "build": {
-                                "type": "string",
-                                "default": "",
-                                "description": "Build the executed command"
-                            },
-                            "distPath": {
-                                "type": "string",
-                                "default": "",
-                                "description": "Pack up the directory to be uploaded"
-                            }
-                        }
-                    },
-                    "default": [
-                        {
-                            "name": "",
-                            "host": "",
-                            "username": "",
-                            "password": "",
-                            "privateKey": "",
-                            "remotePath": "",
-                            "build": "",
-                            "distPath": ""
-                        }
-                    ],
-                    "description": "setting of all server nodes."
-                }
+              "name": {
+                "type": "string",
+                "default": "",
+                "description": "%common.pkg.hostDescription%"
+              },
+              "host": {
+                "type": "string",
+                "default": "",
+                "description": "%common.pkg.beConnectedIPDomain%"
+              },
+              "username": {
+                "type": "string",
+                "default": "",
+                "description": "%common.pkg.username%"
+              },
+              "password": {
+                "type": "string",
+                "default": "",
+                "description": "common.pkg.password"
+              },
+              "privateKey": {
+                "type": "string",
+                "default": "",
+                "description": "%common.pkg.pathOfPrivateKeyCertificate%"
+              },
+              "remotePath": {
+                "type": "string",
+                "default": "",
+                "description": "%common.pkg.serverDir%"
+              },
+              "build": {
+                "type": "string",
+                "default": "",
+                "description": "%common.pkg.buildCommand%"
+              },
+              "distPath": {
+                "type": "string",
+                "default": "",
+                "description": "%common.pkg.uploadedDir%"
+              }
             }
-        },
-        "commands": [
+          },
+          "default": [
             {
-                "command": "woodpecker.refresh",
-                "title": "刷新",
-                "icon": {
-                    "light": "resources/refresh_light.svg",
-                    "dark": "resources/refresh_dark.svg"
-                }
-            },
-            {
-                "command": "woodpecker.upload",
-                "title": "上传",
-                "icon": {
-                    "light": "resources/upload_light.svg",
-                    "dark": "resources/upload_dark.svg"
-                }
+              "name": "",
+              "host": "",
+              "username": "",
+              "password": "",
+              "privateKey": "",
+              "remotePath": "",
+              "build": "",
+              "distPath": ""
             }
-        ],
-        "menus": {
-            "view/title": [
-                {
-                    "command": "woodpecker.refresh",
-                    "when": "view == woodpecker",
-                    "group": "navigation"
-                }
-            ],
-            "view/item/context": [
-                {
-                    "command": "woodpecker.upload",
-                    "when": "view == woodpecker && viewItem == SERVER_NODE",
-                    "group": "inline"
-                }
-            ]
-        },
-        "viewsContainers": {
-            "activitybar": [
-                {
-                    "id": "server-explorer",
-                    "title": "自动化集成服务",
-                    "icon": "assets/activity_bar_icon.svg"
-                }
-            ]
-        },
-        "views": {
-            "server-explorer": [
-                {
-                    "id": "woodpecker",
-                    "name": "自动化集成服务",
-                    "icon": "assets/activity_bar_icon.svg",
-                    "contextualTitle": "自动集成服务"
-                }
-            ]
+          ],
+          "description": "%common.pkg.allServerNode%"
         }
+      }
     },
-    "scripts": {
-        "vscode:prepublish": "yarn run compile",
-        "compile": "tsc -p ./",
-        "lint": "eslint src --ext ts",
-        "watch": "tsc -watch -p ./",
-        "pretest": "yarn run compile && yarn run lint",
-        "test": "node ./dist/test/runTest.js",
-        "build": "vsce package"
+    "commands": [
+      {
+        "command": "woodpecker.refresh",
+        "title": "%common.pkg.refresh%",
+        "icon": {
+          "light": "resources/refresh_light.svg",
+          "dark": "resources/refresh_dark.svg"
+        }
+      },
+      {
+        "command": "woodpecker.upload",
+        "title": "%common.pkg.upload%",
+        "icon": {
+          "light": "resources/upload_light.svg",
+          "dark": "resources/upload_dark.svg"
+        }
+      },
+      {
+        "command": "woodpecker.terminal",
+        "title": "%common.pkg.terminal%",
+        "icon": {
+          "light": "resources/terminal_light.svg",
+          "dark": "resources/terminal_dark.svg"
+        }
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "woodpecker.refresh",
+          "when": "view == woodpecker",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "woodpecker.upload",
+          "when": "view == woodpecker && viewItem == SERVER_NODE",
+          "group": "inline"
+        },
+        {
+          "command": "woodpecker.terminal",
+          "when": "view == woodpecker && viewItem == SERVER_NODE",
+          "group": "inline"
+        }
+      ]
     },
-    "devDependencies": {
-        "@types/glob": "^7.1.3",
-        "@types/mocha": "^8.0.0",
-        "@types/node": "^12.11.7",
-        "@types/vscode": "^1.50.0",
-        "@typescript-eslint/eslint-plugin": "^4.1.1",
-        "@typescript-eslint/parser": "^4.1.1",
-        "eslint": "^7.9.0",
-        "glob": "^7.1.6",
-        "mocha": "^8.1.3",
-        "typescript": "^4.0.2",
-        "vscode-test": "^1.4.0"
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "server-explorer",
+          "title": "%common.pkg.automationIntegrationServices%",
+          "icon": "assets/activity_bar_icon.svg"
+        }
+      ]
     },
-    "dependencies": {
-        "archiver": "^5.0.2",
-        "chalk": "^4.1.0",
-        "inquirer": "^7.3.3",
-        "node-ssh": "^11.1.1",
-        "ora": "^5.1.0"
-    },
-    "bugs": {
-        "url": "https://github.com/semmywong/woodpecker/issues"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/semmywong/woodpecker"
-    },
-    "homepage": "https://github.com/semmywong/woodpecker"
+    "views": {
+      "server-explorer": [
+        {
+          "id": "woodpecker",
+          "name": "%common.pkg.automationIntegrationServices%",
+          "icon": "assets/activity_bar_icon.svg",
+          "contextualTitle": "%common.pkg.automationIntegrationServices%"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint src --ext ts",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "test": "node ./dist/test/runTest.js",
+    "build": "vsce package"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.0",
+    "@types/fs-extra": "^8.0.0",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.50.0",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
+    "eslint": "^7.9.0",
+    "glob": "^7.1.6",
+    "mocha": "^8.1.3",
+    "typescript": "^4.0.2",
+    "vscode-test": "^1.4.0"
+  },
+  "dependencies": {
+    "archiver": "^5.0.2",
+    "chalk": "^4.1.0",
+    "inquirer": "^7.3.3",
+    "fs-extra": "^8.0.1",
+    "node-ssh": "^11.1.1",
+    "ora": "^5.1.0"
+  },
+  "bugs": {
+    "url": "https://github.com/semmywong/woodpecker/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semmywong/woodpecker"
+  },
+  "homepage": "https://github.com/semmywong/woodpecker"
 }

@@ -5,6 +5,7 @@ import { NodeSSH } from 'node-ssh';
 import * as path from 'path';
 import * as vscode from 'vscode';
 import { ServerNodeConfigItem } from './ServerNodeProvider';
+import localize from './localize';
 import { oConsole } from './utils';
 
 const { log, error, succeed, info, underline } = oConsole;
@@ -28,38 +29,38 @@ export class Deploy {
     this.taskList = [
       {
         task: this.checkConfig,
-        tip: '配置检查',
+        tip: localize('ext.deploy.checkSettings'),
         increment: 0,
         async: false,
       },
-      { task: this.execBuild, tip: '打包', increment: 10 },
-      { task: this.buildZip, tip: '压缩文件', increment: 20 },
-      { task: this.connectSSH, tip: '连接服务器', increment: 50 },
+      { task: this.execBuild, tip: localize('ext.deploy.pack'), increment: 10 },
+      { task: this.buildZip, tip: localize('ext.deploy.packedZip'), increment: 20 },
+      { task: this.connectSSH, tip: localize('ext.deploy.connectingServer'), increment: 50 },
       {
         task: this.removeRemoteFile,
-        tip: '删除服务器文件',
+        tip: localize('ext.deploy.removeServerFiles'),
         increment: 60,
         async: false,
       },
       {
         task: this.uploadLocalFile,
-        tip: '上传文件至服务器',
+        tip: localize('ext.deploy.uploadToServer'),
         increment: 70,
       },
       {
         task: this.unzipRemoteFile,
-        tip: '解压服务器文件',
+        tip: localize('ext.deploy.unpackZip'),
         increment: 80,
       },
       {
         task: this.disconnectSSH,
-        tip: '断开服务器',
+        tip: localize('ext.deploy.closedConnection'),
         increment: 90,
         async: false,
       },
       {
         task: this.removeLocalFile,
-        tip: '删除本地压缩文件',
+        tip: localize('ext.deploy.removeLocalZipFile'),
         increment: 100,
         async: false,
       },
@@ -68,10 +69,10 @@ export class Deploy {
   }
   start = async () => {
     log('--------开始执行-------');
-    const { host } = this.config;
+    const { name, host } = this.config;
     const progressOptions = {
       location: vscode.ProgressLocation.Notification,
-      title: `打包上传(${host})`,
+      title: localize('ext.deploy.uploadServer', host),
     };
     vscode.window.withProgress(progressOptions, async (progress, token) => {
       let schedule = '';
@@ -82,7 +83,7 @@ export class Deploy {
           const { task, async, tip, increment } = taskList[i];
           progress.report({
             increment,
-            message: `${tip}中...（${increment}%）`,
+            message: `${tip}...(${increment}%)`,
           });
           schedule = tip;
           if (async === false) {
@@ -93,10 +94,16 @@ export class Deploy {
         }
         log('--------执行成功-------');
         this.callback(true);
-        vscode.window.showInformationMessage(`上传成功(${host})`, '知道了');
+        vscode.window.showInformationMessage(
+          localize('ext.deploy.uploadSuccess', name, host),
+          localize('common.titleTip'),
+        );
       } catch (err) {
         this.callback(false);
-        vscode.window.showInformationMessage(`上传失败(${host})：${err}`, '知道了');
+        vscode.window.showInformationMessage(
+          localize('ext.deploy.uploadFail', name, host),
+          localize('common.titleTip'),
+        );
         error(`${schedule}失败:`);
         error(err);
       }
@@ -107,18 +114,17 @@ export class Deploy {
   };
   checkConfig = () => {
     const { host, username, remotePath, distPath } = this.config;
-    console.log(`检测配置...`, this.config);
     if (!remotePath) {
-      throw new Error('请配置服务器文件目录[remotePath]');
+      throw new Error(localize('ext.deploy.setRemotePath'));
     }
     if (!username) {
-      throw new Error('请配置用户名[username]');
+      throw new Error(localize('ext.deploy.setUsername'));
     }
     if (!host) {
-      throw new Error('请配置服务端地址[host]');
+      throw new Error(localize('ext.deploy.setHost'));
     }
     if (!distPath) {
-      throw new Error('请配置本地需要上传的目录[distPath]');
+      throw new Error(localize('ext.deploy.setDistPath'));
     }
   };
   // 1. 执行打包脚本
