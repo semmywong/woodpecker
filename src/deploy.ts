@@ -143,7 +143,7 @@ export class Deploy {
           if (e === null) {
             resolve();
           } else {
-            reject(`1. 执行打包脚本失败：${e.message}`);
+            reject(localize('ext.deploy.firstStep.error', e.message));
           }
         },
       );
@@ -159,12 +159,12 @@ export class Deploy {
         zlib: { level: 9 },
       }).on('error', (e: any) => {
         error(e);
-        reject(`2. 打包zip出错: ${e}`);
+        reject(localize('ext.deploy.secondStep.error', e.message));
       });
       const localPathFile = path.join(this.workspaceRoot, distPath ?? 'dist', fileName);
       const output = fs.createWriteStream(localPathFile).on('close', (e: any) => {
         if (e) {
-          reject(`2. 打包zip出错: ${e}`);
+          reject(localize('ext.deploy.secondStep.error', e));
           process.exit(1);
         } else {
           resolve();
@@ -187,7 +187,7 @@ export class Deploy {
           resolve();
         })
         .catch((err) => {
-          reject(err);
+          reject(localize('ext.deploy.thirdStep.error', err));
         });
     });
   };

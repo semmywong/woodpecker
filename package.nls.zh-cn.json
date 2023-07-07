@@ -32,5 +32,8 @@
   "ext.deploy.setDistPath": "请配置本地需要上传的目录[distPath]",
   "ext.deploy.workspaceEmpty": "当前无工作区",
   "ext.deploy.packedUpload": "打包上传",
+  "ext.deploy.firstStep.error": "1. 执行打包脚本失败：{0}",
+  "ext.deploy.secondStep.error": "2. 打包zip出错: {0}",
+  "ext.deploy.thirdStep.error": "3. 连接服务器出错: {0}",
   "ext.terminal.needPrivateKeyCertificate": "终端连接必须配置密钥证书"
 }
