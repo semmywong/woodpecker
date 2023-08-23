@@ -180,7 +180,7 @@
     "vscode-test": "^1.4.0"
   },
   "dependencies": {
-    "archiver": "^5.0.2",
+    "archiver": "^6.0.0",
     "chalk": "^4.1.0",
     "inquirer": "^7.3.3",
     "fs-extra": "^8.0.1",

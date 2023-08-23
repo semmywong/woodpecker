@@ -4,8 +4,8 @@ const childProcess = require('child_process');
 import { NodeSSH } from 'node-ssh';
 import * as path from 'path';
 import * as vscode from 'vscode';
-import { ServerNodeConfigItem } from './ServerNodeProvider';
 import localize from './localize';
+import { ServerNodeConfigItem } from './ServerNodeProvider';
 import { oConsole } from './utils';
 
 const { log, error, succeed, info, underline } = oConsole;
@@ -152,17 +152,17 @@ export class Deploy {
   // 2. 压缩文件夹
   buildZip = () => {
     const { distPath } = this.config;
-    const fileName = `${path.basename(distPath || 'dist') || 'dist'}.zip`;
+    const fileName = `${path.basename(distPath || 'dist') || 'dist'}.tar.gz`;
     return new Promise<void>((resolve, reject) => {
       log(`2. 压缩文件夹： ${distPath}`);
-      const archive = archiver('zip', {
+      const archive = archiver('tar', {
         zlib: { level: 9 },
+        gzip: true,
       }).on('error', (e: any) => {
         error(e);
         reject(localize('ext.deploy.secondStep.error', e.message));
       });
-      const localPathFile = path.join(this.workspaceRoot, distPath ?? 'dist', fileName);
-      const output = fs.createWriteStream(localPathFile).on('close', (e: any) => {
+      const output = fs.createWriteStream(fileName).on('close', (e: any) => {
         if (e) {
           reject(localize('ext.deploy.secondStep.error', e));
           process.exit(1);
@@ -203,23 +203,22 @@ export class Deploy {
   // 上传本地文件
   uploadLocalFile = async () => {
     const { remotePath, distPath } = this.config;
-    const fileName = `${path.basename(distPath || 'dist') || 'dist'}.zip`;
+    const fileName = `${path.basename(distPath || 'dist') || 'dist'}.tar.gz`;
     const remoteFile = path.posix.join(remotePath, fileName);
-    const localPathFile = path.join(this.workspaceRoot, distPath ?? 'dist', fileName);
 
-    const result = await this.ssh.putFile(localPathFile, remoteFile, null, {
+    const result = await this.ssh.putFile(fileName, remoteFile, null, {
       concurrency: 1,
     });
-    log(`5. 上传打包zip至目录： ${underline(localPathFile)}, 上传结果：${result}`);
+    log(`5. 上传打包gzip至目录： ${underline(fileName)}, 上传结果：${result}`);
 
     return result;
   };
   // 解压远程文件
   unzipRemoteFile = async () => {
     const { remotePath, distPath } = this.config;
-    const fileName = `${path.basename(distPath || 'dist') || 'dist'}.zip`;
+    const fileName = `${path.basename(distPath || 'dist') || 'dist'}.tar.gz`;
     const remoteFile = path.posix.join(remotePath, fileName);
-    const command = `unzip -o ${remoteFile} -d ${remotePath}`;
+    const command = `tar -xzf ${remoteFile} -C ${remotePath}`;
     const result = await this.ssh.execCommand(command);
     log(`6. 解压远程文件 ${underline(remoteFile)}, 执行命令：${command}, 执行结果：${JSON.stringify(result)}`);
     return result;
@@ -227,6 +226,7 @@ export class Deploy {
   // 删除本地打包文件
   removeLocalFile = () => {
     const { distPath } = this.config;
+    const fileName = `${path.basename(distPath || 'dist') || 'dist'}.tar.gz`;
     const localPath = path.join(this.workspaceRoot, distPath ?? 'dist');
     log(`7. 删除本地打包目录: ${underline(localPath)}`);
     const remove = (path: string) => {
@@ -243,6 +243,7 @@ export class Deploy {
       }
     };
     remove(localPath);
+    fs.unlinkSync(fileName);
   };
   // 断开ssh
   disconnectSSH = () => {
