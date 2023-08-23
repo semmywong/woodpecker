@@ -153,6 +153,9 @@ export class Deploy {
   buildZip = () => {
     const { distPath } = this.config;
     const fileName = `${path.basename(distPath || 'dist') || 'dist'}.tar.gz`;
+    if (fs.existsSync(path.join(this.workspaceRoot, fileName))) {
+      fs.unlinkSync(path.join(this.workspaceRoot, fileName));
+    }
     return new Promise<void>((resolve, reject) => {
       log(`2. 压缩文件夹： ${distPath}`);
       const archive = archiver('tar', {
@@ -162,7 +165,7 @@ export class Deploy {
         error(e);
         reject(localize('ext.deploy.secondStep.error', e.message));
       });
-      const output = fs.createWriteStream(fileName).on('close', (e: any) => {
+      const output = fs.createWriteStream(path.join(this.workspaceRoot, fileName)).on('close', (e: any) => {
         if (e) {
           reject(localize('ext.deploy.secondStep.error', e));
           process.exit(1);
@@ -206,10 +209,10 @@ export class Deploy {
     const fileName = `${path.basename(distPath || 'dist') || 'dist'}.tar.gz`;
     const remoteFile = path.posix.join(remotePath, fileName);
 
-    const result = await this.ssh.putFile(fileName, remoteFile, null, {
+    const result = await this.ssh.putFile(path.join(this.workspaceRoot, fileName), remoteFile, null, {
       concurrency: 1,
     });
-    log(`5. 上传打包gzip至目录： ${underline(fileName)}, 上传结果：${result}`);
+    log(`5. 上传打包gzip至远程目录： ${underline(remoteFile)}, 上传结果：${result}`);
 
     return result;
   };
@@ -243,7 +246,7 @@ export class Deploy {
       }
     };
     remove(localPath);
-    fs.unlinkSync(fileName);
+    fs.unlinkSync(path.join(this.workspaceRoot, fileName));
   };
   // 断开ssh
   disconnectSSH = () => {
