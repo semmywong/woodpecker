@@ -91,7 +91,15 @@
     },
     "commands": [
       {
-        "command": "woodpecker.refresh",
+        "command": "woodpecker.workspaceRefresh",
+        "title": "%common.pkg.refresh%",
+        "icon": {
+          "light": "resources/refresh_light.svg",
+          "dark": "resources/refresh_dark.svg"
+        }
+      },
+      {
+        "command": "woodpecker.userRefresh",
         "title": "%common.pkg.refresh%",
         "icon": {
           "light": "resources/refresh_light.svg",
@@ -118,20 +126,25 @@
     "menus": {
       "view/title": [
         {
-          "command": "woodpecker.refresh",
-          "when": "view == woodpecker",
+          "command": "woodpecker.workspaceRefresh",
+          "when": "view == woodpecker.workspaceServerExplorer",
+          "group": "navigation"
+        },
+        {
+          "command": "woodpecker.userRefresh",
+          "when": "view == woodpecker.userServerExplorer",
           "group": "navigation"
         }
       ],
       "view/item/context": [
         {
           "command": "woodpecker.upload",
-          "when": "view == woodpecker && viewItem == SERVER_NODE",
+          "when": "(view == woodpecker.workspaceServerExplorer || view == woodpecker.userServerExplorer) && viewItem == SERVER_NODE",
           "group": "inline"
         },
         {
           "command": "woodpecker.terminal",
-          "when": "view == woodpecker && viewItem == SERVER_NODE",
+          "when": "(view == woodpecker.workspaceServerExplorer || view == woodpecker.userServerExplorer) && viewItem == SERVER_NODE",
           "group": "inline"
         }
       ]
@@ -139,19 +152,25 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "server-explorer",
+          "id": "woodpecker",
           "title": "%common.pkg.automationIntegrationServices%",
           "icon": "assets/activity_bar_icon.svg"
         }
       ]
     },
     "views": {
-      "server-explorer": [
+      "woodpecker": [
         {
-          "id": "woodpecker",
-          "name": "%common.pkg.automationIntegrationServices%",
+          "id": "woodpecker.workspaceServerExplorer",
+          "name": "%common.pkg.workspaceServerExplorer%",
           "icon": "assets/activity_bar_icon.svg",
-          "contextualTitle": "%common.pkg.automationIntegrationServices%"
+          "contextualTitle": "%common.pkg.workspaceServerExplorer%"
+        },
+        {
+          "id": "woodpecker.userServerExplorer",
+          "name": "%common.pkg.userServerExplorer%",
+          "icon": "assets/activity_bar_icon.svg",
+          "contextualTitle": "%common.pkg.userServerExplorer%"
         }
       ]
     }

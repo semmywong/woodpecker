@@ -2,12 +2,13 @@
  * @Author: Semmy Wong
  * @Date: 2023-02-21 17:29:21
  * @LastEditors: Semmy Wong
- * @LastEditTime: 2023-06-08 14:05:45
+ * @LastEditTime: 2023-11-16 23:38:28
  * @Description: view列表服务器节点列表
  */
 import * as vscode from 'vscode';
-import { ServerNode } from './ServerNode';
+import { ConfigGroup } from './constants';
 import localize from './localize';
+import { ServerNode } from './ServerNode';
 
 export interface ServerNodeConfig {
   [x: string]: ServerNodeConfigItem;
@@ -27,19 +28,20 @@ export interface ServerNodeConfigItem {
 
 export class ServerNodeProvider implements vscode.TreeDataProvider<ServerNode> {
   // workspaceRoot 当前工作区根路径
-  constructor(private workspaceRoot: string) {}
+  constructor(private workspaceRoot: string, private configGroup: ConfigGroup) {}
 
   #onDidChangeTreeData: vscode.EventEmitter<ServerNode | undefined | void> = new vscode.EventEmitter<
     ServerNode | undefined | void
   >();
   readonly onDidChangeTreeData: vscode.Event<ServerNode | undefined | void> = this.#onDidChangeTreeData.event;
 
-  getDeployConfig = () => {
+  getDeployConfig = (): ServerNodeConfigItem[] => {
     try {
-      const config = (vscode.workspace.getConfiguration().get('woodpecker') as any)?.config;
-      return config ?? [];
+      const inspectConfig = vscode.workspace.getConfiguration('woodpecker').inspect('config');
+      const config = this.configGroup === ConfigGroup.user ? inspectConfig?.globalValue : inspectConfig?.workspaceValue;
+      return (config as ServerNodeConfigItem[]) ?? [];
     } catch (error) {
-      return {};
+      return [];
     }
   };
 
