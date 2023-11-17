@@ -2,7 +2,7 @@
  * @Author: Semmy Wong
  * @Date: 2023-02-21 17:29:21
  * @LastEditors: Semmy Wong
- * @LastEditTime: 2023-11-17 09:16:03
+ * @LastEditTime: 2023-11-17 09:18:25
  * @Description: view列表服务器节点列表
  */
 import * as vscode from 'vscode';
@@ -63,14 +63,21 @@ export class ServerNodeProvider implements vscode.TreeDataProvider<ServerNode> {
     if (element) {
       return Promise.resolve([]);
     } else {
-      const configList = this.getDeployConfig().map((config: any) => {
-        return new ServerNode(config.name, config.host, 0, config, this.workspaceRoot, {
-          title: localize('ext.deploy.packedUpload'),
-          command: 'woodpecker.upload',
-          tooltip: '',
-        });
+      const serverNodes = this.getDeployConfig().map((config: any) => {
+        return new ServerNode(
+          config.name,
+          config.host,
+          vscode.TreeItemCollapsibleState.None,
+          config,
+          this.workspaceRoot,
+          {
+            title: localize('ext.deploy.packedUpload'),
+            command: 'woodpecker.upload',
+            tooltip: '',
+          },
+        );
       });
-      return Promise.resolve(configList);
+      return Promise.resolve(serverNodes);
     }
   }
 }
