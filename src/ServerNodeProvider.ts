@@ -2,7 +2,7 @@
  * @Author: Semmy Wong
  * @Date: 2023-02-21 17:29:21
  * @LastEditors: Semmy Wong
- * @LastEditTime: 2023-11-16 23:38:28
+ * @LastEditTime: 2023-11-17 09:16:03
  * @Description: view列表服务器节点列表
  */
 import * as vscode from 'vscode';
@@ -38,7 +38,7 @@ export class ServerNodeProvider implements vscode.TreeDataProvider<ServerNode> {
   getDeployConfig = (): ServerNodeConfigItem[] => {
     try {
       const inspectConfig = vscode.workspace.getConfiguration('woodpecker').inspect('config');
-      const config = this.configGroup === ConfigGroup.user ? inspectConfig?.globalValue : inspectConfig?.workspaceValue;
+      const config = this.configGroup === ConfigGroup.User ? inspectConfig?.globalValue : inspectConfig?.workspaceValue;
       return (config as ServerNodeConfigItem[]) ?? [];
     } catch (error) {
       return [];
