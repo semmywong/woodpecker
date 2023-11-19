@@ -132,19 +132,19 @@
         },
         {
           "command": "woodpecker.userRefresh",
-          "when": "view == woodpecker.userServerExplorer",
+          "when": "view == woodpecker.globalServerExplorer",
           "group": "navigation"
         }
       ],
       "view/item/context": [
         {
           "command": "woodpecker.upload",
-          "when": "(view == woodpecker.workspaceServerExplorer || view == woodpecker.userServerExplorer) && viewItem == SERVER_NODE",
+          "when": "(view == woodpecker.workspaceServerExplorer || view == woodpecker.globalServerExplorer) && viewItem == SERVER_NODE",
           "group": "inline"
         },
         {
           "command": "woodpecker.terminal",
-          "when": "(view == woodpecker.workspaceServerExplorer || view == woodpecker.userServerExplorer) && viewItem == SERVER_NODE",
+          "when": "(view == woodpecker.workspaceServerExplorer || view == woodpecker.globalServerExplorer) && viewItem == SERVER_NODE",
           "group": "inline"
         }
       ]
@@ -167,10 +167,10 @@
           "contextualTitle": "%common.pkg.workspaceServerExplorer%"
         },
         {
-          "id": "woodpecker.userServerExplorer",
-          "name": "%common.pkg.userServerExplorer%",
+          "id": "woodpecker.globalServerExplorer",
+          "name": "%common.pkg.globalServerExplorer%",
           "icon": "assets/activity_bar_icon.svg",
-          "contextualTitle": "%common.pkg.userServerExplorer%"
+          "contextualTitle": "%common.pkg.globalServerExplorer%"
         }
       ]
     }

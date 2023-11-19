@@ -2,14 +2,14 @@
  * @Author: Semmy Wong
  * @Date: 2023-02-21 17:29:03
  * @LastEditors: Semmy Wong
- * @LastEditTime: 2023-06-08 13:46:25
+ * @LastEditTime: 2023-11-19 22:43:30
  * @Description: 单个服务器节点
  */
 import * as path from 'path';
 import * as vscode from 'vscode';
-import type { ServerNodeConfigItem } from './ServerNodeProvider';
 
 export class ServerNode extends vscode.TreeItem {
+  public type: string = 'server';
   constructor(
     public readonly label: string,
     private readonly version: string,

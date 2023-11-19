@@ -2,7 +2,7 @@
  * @Author: Semmy Wong
  * @Date: 2023-02-21 13:10:36
  * @LastEditors: Semmy Wong
- * @LastEditTime: 2023-11-17 09:16:15
+ * @LastEditTime: 2023-11-19 23:21:57
  * @Description: 插件入口
  */
 import * as vscode from 'vscode';
@@ -17,8 +17,8 @@ export function activate(context: vscode.ExtensionContext) {
   vscode.window.registerTreeDataProvider('woodpecker.workspaceServerExplorer', workspaceServerNodeProvider);
   vscode.commands.registerCommand('woodpecker.workspaceRefresh', () => workspaceServerNodeProvider.refresh());
 
-  const userServerNodeProvider = new ServerNodeProvider(vscode.workspace.rootPath || '', ConfigGroup.User);
-  vscode.window.registerTreeDataProvider('woodpecker.userServerExplorer', userServerNodeProvider);
+  const userServerNodeProvider = new ServerNodeProvider(vscode.workspace.rootPath || '', ConfigGroup.Global);
+  vscode.window.registerTreeDataProvider('woodpecker.globalServerExplorer', userServerNodeProvider);
   vscode.commands.registerCommand('woodpecker.userRefresh', () => userServerNodeProvider.refresh());
 
   vscode.commands.registerCommand('woodpecker.upload', upload);

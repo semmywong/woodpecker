@@ -5,7 +5,6 @@ import { NodeSSH } from 'node-ssh';
 import * as path from 'path';
 import * as vscode from 'vscode';
 import localize from './localize';
-import { ServerNodeConfigItem } from './ServerNodeProvider';
 import { oConsole } from './utils';
 
 const { log, error, succeed, info, underline } = oConsole;

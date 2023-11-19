@@ -2,7 +2,7 @@
   "common.titleTip": "Got it",
   "common.pkg.automationIntegrationServices": "Automation Integration Services",
   "common.pkg.workspaceServerExplorer": "Workspace Server Group Explorer",
-  "common.pkg.userServerExplorer": "User Server Group Explorer",
+  "common.pkg.globalServerExplorer": "Global Server Group Explorer",
   "common.pkg.hostDescription": "the host description",
   "common.pkg.beConnectedIPDomain": "ip or domain which can be connected",
   "common.pkg.username": "username",

@@ -2,7 +2,7 @@
   "common.titleTip": "知道了",
   "common.pkg.automationIntegrationServices": "自动化集成服务",
   "common.pkg.workspaceServerExplorer": "工作区服务器组",
-  "common.pkg.userServerExplorer": "用户服务器组",
+  "common.pkg.globalServerExplorer": "全局服务器组",
   "common.pkg.hostDescription": "服务器描述说明",
   "common.pkg.beConnectedIPDomain": "服务器的IP或域名",
   "common.pkg.username": "用户名",

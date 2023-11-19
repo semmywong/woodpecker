@@ -2,10 +2,10 @@
  * @Author: Semmy Wong
  * @Date: 2023-11-16 23:22:31
  * @LastEditors: Semmy Wong
- * @LastEditTime: 2023-11-17 09:15:43
+ * @LastEditTime: 2023-11-19 23:19:35
  * @Description: ConfigGroup
  */
 export enum ConfigGroup {
-  User = 1,
-  Workspace = 2,
+  Global = 'global',
+  Workspace = 'workspace',
 }
