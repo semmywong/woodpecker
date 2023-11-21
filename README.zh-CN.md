@@ -32,20 +32,55 @@
 3. 你可以选择进入 `用户设置`或 `工作区设置`，找到 `扩展`树节点并找到 `Woodpecker`，点击 `Settings.json`中的编辑。
 4. 进入`Settings.json`文件，将自动为你生成以下结构
 
+* 一台服务器的配置
+
 ```json
 {
-    "name": "开发服务器", // 服务器名称的备注
-    "host": "127.0.0.1", // 服务器地址
-    "username": "root", // 登录的用户名
-    "password": "password", // 登录密码
-    "remotePath": "/home/www/admin", // 用于项目上传的服务器文件目录
-    "build": "yarn build:test", // 建立已执行的命令
-    "distPath": "dist" // 项目被包装成需要上传的目录
+    "name": "develop server", // Remarks of the server name
+    "host": "127.0.0.1", // Server Address
+    "username": "root", // Log in username
+    "password": "password", // Log in password
+    "remotePath": "/home/www/admin", // The server file directory for project uploads
+    "build": "yarn build:test", // Build the executed command
+    "distPath": "dist" // The project is packed with directories that need to be uploaded
 }
 
 ```
 
+* 如果你有很多服务器，那么你也可以对这些服务器分组管理
+
+```json
+[
+    {
+        "type": "group",
+        "name": "group name",
+        "children": [
+            {
+                "name": "develop server", // Remarks of the server name
+                "host": "127.0.0.1", // Server Address
+                "username": "root", // Log in username
+                "password": "password", // Log in password
+                "remotePath": "/home/www/admin", // The server file directory for project uploads
+                "build": "yarn build:test", // Build the executed command
+                "distPath": "dist" // The project is packed with directories that need to be uploaded
+            }
+        ]
+    },
+    {
+        "name": "develop server", // Remarks of the server name
+        "host": "127.0.0.1", // Server Address
+        "username": "root", // Log in username
+        "password": "password", // Log in password
+        "remotePath": "/home/www/admin", // The server file directory for project uploads
+        "build": "yarn build:test", // Build the executed command
+        "distPath": "dist" // The project is packed with directories that need to be uploaded
+    }
+]
+```
+
 5. 你可以在数组配置里创建多个环境
+
+6. Woodpecker默认会创建两个分组，一个是当前工作区的服务器(只显示工作的settings.json配置)，一个是全局的服务器组(显示用户的settings.json)
 
 ## FAQ
 
