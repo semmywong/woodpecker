@@ -71,7 +71,7 @@ export class Deploy {
     const { name, host } = this.config;
     const progressOptions = {
       location: vscode.ProgressLocation.Notification,
-      title: localize('ext.deploy.uploadServer', host),
+      title: localize('ext.deploy.uploadServer', name, host),
     };
     vscode.window.withProgress(progressOptions, async (progress, token) => {
       let schedule = '';

@@ -25,7 +25,7 @@
   "ext.deploy.unpackZip": "解压服务器文件",
   "ext.deploy.closedConnection": "断开服务器",
   "ext.deploy.removeLocalZipFile": "删除本地压缩文件",
-  "ext.deploy.uploadServer": "打包上传{0}",
+  "ext.deploy.uploadServer": "打包上传 [{0}({1})]",
   "ext.deploy.uploadSuccess": "上传成功 [{0}({1})]",
   "ext.deploy.uploadFail": "上传失败 [{0}({1})]",
   "ext.deploy.setRemotePath": "请配置服务器文件目录[remotePath]",

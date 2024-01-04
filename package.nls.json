@@ -25,7 +25,7 @@
   "ext.deploy.unpackZip": "Decompress the server files",
   "ext.deploy.closedConnection": "Disconnect the server",
   "ext.deploy.removeLocalZipFile": "Delete local zip file",
-  "ext.deploy.uploadServer": "Package upload {0}",
+  "ext.deploy.uploadServer": "Package upload [{0}({1})]",
   "ext.deploy.uploadSuccess": "Upload successful [{0}({1})]",
   "ext.deploy.uploadFail": "Upload fail [{0}({1})]",
   "ext.deploy.setRemotePath": "Please configure the server file directory [remotePath]",
