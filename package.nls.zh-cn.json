@@ -17,7 +17,7 @@
   "common.pkg.terminal": "打开终端",
   "ext.deploy.checkSettings": "配置检查",
   "ext.deploy.pack": "打包",
-  "ext.deploy.taskRunning": "当前已有任务正在进行，请稍后再试",
+  "ext.deploy.deployTask": "已添加到发布队列[{0}({1})]，当前队列数[{3}]",
   "ext.deploy.packedZip": "压缩文件",
   "ext.deploy.connectingServer": "连接服务器",
   "ext.deploy.removeServerFiles": "删除服务器文件",

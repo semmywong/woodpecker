@@ -17,7 +17,7 @@
   "common.pkg.terminal": "terminal",
   "ext.deploy.checkSettings": "check settings",
   "ext.deploy.pack": "pack",
-  "ext.deploy.taskRunning": "A task is currently in progress, please try again later",
+  "ext.deploy.deployTask": "Added to deployment queue[{0}({1})], current total pending[{3}]",
   "ext.deploy.packedZip": "Compressed files",
   "ext.deploy.connectingServer": "Connecting to the server",
   "ext.deploy.removeServerFiles": "Delete server files",

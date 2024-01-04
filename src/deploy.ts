@@ -99,10 +99,7 @@ export class Deploy {
         );
       } catch (err) {
         this.callback(false);
-        vscode.window.showInformationMessage(
-          localize('ext.deploy.uploadFail', name, host),
-          localize('common.titleTip'),
-        );
+        vscode.window.showErrorMessage(localize('ext.deploy.uploadFail', name, host), localize('common.titleTip'));
         error(`${schedule}失败:`);
         error(err);
       }
